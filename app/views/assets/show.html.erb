@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @asset.type %>
+</p>
+
+<p>
+  <b>Assetable:</b>
+  <%= @asset.assetable_id %>
+</p>
+
+<p>
+  <b>Assetable type:</b>
+  <%= @asset.assetable_type %>
+</p>
+
+<p>
+  <b>Attachment file name:</b>
+  <%= @asset.attachment_file_name %>
+</p>
+
+<p>
+  <b>Attachment content type:</b>
+  <%= @asset.attachment_content_type %>
+</p>
+
+<p>
+  <b>Attachment file size:</b>
+  <%= @asset.attachment_file_size %>
+</p>
+
+<p>
+  <b>Attachment updated at:</b>
+  <%= @asset.attachment_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_asset_path(@asset) %> |
+<%= link_to 'Back', assets_path %>

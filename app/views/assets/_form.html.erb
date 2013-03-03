@@ -1,0 +1,45 @@
+<%= form_for(@asset) do |f| %>
+  <% if @asset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
+
+      <ul>
+      <% @asset.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :assetable_id %><br />
+    <%= f.number_field :assetable_id %>
+  </div>
+  <div class="field">
+    <%= f.label :assetable_type %><br />
+    <%= f.text_field :assetable_type %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_file_name %><br />
+    <%= f.text_field :attachment_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_content_type %><br />
+    <%= f.text_field :attachment_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_file_size %><br />
+    <%= f.number_field :attachment_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :attachment_updated_at %><br />
+    <%= f.datetime_select :attachment_updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

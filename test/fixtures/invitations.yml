@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  message: MyString
+  event_id: 1
+  sent: false
+  accepted: false
+
+two:
+  email: MyString
+  message: MyString
+  event_id: 1
+  sent: false
+  accepted: false
