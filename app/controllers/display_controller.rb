@@ -5,6 +5,8 @@ class DisplayController < ApplicationController
 	def index
 		if signed_in?
 			redirect_to events_path
+		else
+			redirect_to :signup
 		end
 	end
 

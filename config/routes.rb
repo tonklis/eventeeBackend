@@ -1,5 +1,6 @@
 Eventee::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
   resources :comments
   resources :assets
   resources :invitations
@@ -9,9 +10,9 @@ Eventee::Application.routes.draw do
   resources :users
 
 	devise_scope :user do
-    get "logout", :to => "devise/sessions#destroy"
-    get "signin", :to => "devise/sessions#new"
-    get "signup", :to => "devise/registrations#new"
+    get "logout", :to => "devise/sessions#destroy", :as => :logout
+    get "signin", :to => "devise/sessions#new", :as => :signin
+    get "signup", :to => "devise/registrations#new", :as => :signup
   end
 
   root to: 'display#index'
