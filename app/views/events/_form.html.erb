@@ -35,24 +35,16 @@
       <% end %>
 
       <fieldset>
-        <%= f.simple_fields_for :pictures do |pictures_form| %>
-            <%= pictures_form.input :attachment, as: :file %>
-        <% end %>
-        <%= f.link_to_add "Add Image", :pictures, label: 'Pictures' %>
+        
       </fieldset>
-      
-      <%#= f.fields_for :videos do |videos_form| %>
-        <div>
-          <%#= videos_form.label :video %>
-          <%#= videos_form.file_field :attachment %>
-        </div>
-      <%# end %>
-      <%#= f.fields_for :documents do |documents_form| %>
-        <div>
-          <%#= documents_form.label :document %>
-          <%#= documents_form.file_field :attachment %>
-        </div>
-      <%# end %>
+
+      <fieldset>
+        <%= f.simple_fields_for :pictures do |pictures_form| %>
+          <%= pictures_form.input :attachment, as: :file %>
+        <% end %>
+        <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
+      </fieldset>
+
       <div class="actions">
         <%= f.button :submit, 'Continue', class: "btn btn-large btn-primary pull-right" %>
       </div>

@@ -27,9 +27,9 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
 		@event.build_thumbnail
-		@event.pictures.build
-		@event.videos.build
-		@event.documents.build
+		# @event.pictures.build
+		# @event.videos.build
+		# @event.documents.build
 
     respond_to do |format|
       format.html # new.html.erb
