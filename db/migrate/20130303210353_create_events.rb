@@ -8,7 +8,6 @@ class CreateEvents < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :location_id
-      t.integer :thumbnail_id
 
       t.timestamps
     end

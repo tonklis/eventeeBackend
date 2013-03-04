@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303222739) do
+ActiveRecord::Schema.define(:version => 20130304021636) do
 
   create_table "assets", :force => true do |t|
     t.string   "type"
@@ -23,15 +23,17 @@ ActiveRecord::Schema.define(:version => 20130303222739) do
     t.datetime "attachment_updated_at"
     t.string   "comment"
     t.integer  "likes"
-    t.string   "url"
     t.integer  "event_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
 
-  create_table "documents", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "comments", :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -42,9 +44,8 @@ ActiveRecord::Schema.define(:version => 20130303222739) do
     t.string   "name"
     t.text     "description"
     t.integer  "location_id"
-    t.integer  "thumbnail_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "events_users", :id => false, :force => true do |t|
@@ -71,20 +72,10 @@ ActiveRecord::Schema.define(:version => 20130303222739) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "pictures", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "requests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "accepted"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "thumbnails", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -96,11 +87,6 @@ ActiveRecord::Schema.define(:version => 20130303222739) do
     t.string   "uid"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "videos", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end

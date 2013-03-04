@@ -10,7 +10,6 @@ class CreateAssets < ActiveRecord::Migration
       t.datetime :attachment_updated_at
 			t.string :comment
 			t.integer :likes
-			t.string :url
 			t.integer :event_id
 
       t.timestamps
