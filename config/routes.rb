@@ -27,6 +27,8 @@ Eventee::Application.routes.draw do
     get "signup", :to => "devise/registrations#new"
   end
 
+  match 'dashboard' => 'display#dashboard', :as => :dashboard
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -77,6 +79,7 @@ Eventee::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'display#index'
 
   # See how all your routes lay out with "rake routes"
 

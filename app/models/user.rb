@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :omniauthable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 	has_and_belongs_to_many :events
 	has_many :created_events, :class_name => "Event", :foreign_key => :creator_id
 	has_many :requests
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 						 uid:auth.uid,
 						 email:auth.info.email,
 						 password:Devise.friendly_token[0,20]
-						 )
+			)
 		end
 		user
 	end
