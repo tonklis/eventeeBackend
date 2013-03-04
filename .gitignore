@@ -10,3 +10,5 @@ tmp/
 *~
 config/environments/development.rb
 .DS_Store
+.env
+Procfile
