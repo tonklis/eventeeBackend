@@ -1,5 +1,5 @@
 Eventee::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
   resources :comments
 
@@ -21,6 +21,11 @@ Eventee::Application.routes.draw do
 
   resources :users
 
+	devise_scope :user do
+    get "logout", :to => "devise/sessions#destroy"
+    get "signin", :to => "devise/sessions#new"
+    get "signup", :to => "devise/registrations#new"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
