@@ -18,8 +18,9 @@ Eventee::Application.routes.draw do
 
   resources :events
 
-
   resources :users
+
+	match 'login' => 'users#login', :as => :login
 
 	devise_scope :user do
     get "logout", :to => "devise/sessions#destroy"
