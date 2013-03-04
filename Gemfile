@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
