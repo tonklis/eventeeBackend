@@ -8,7 +8,7 @@
         <div class="thumbnail">
           <small>
             Created by: <%= link_to event.creator do %>
-              <strong><%= event.creator.first_name %> <%= event.creator.last_name %></strong>
+              <strong><%= event.creator.first_name if event.creator %> <%= event.creator.last_name if event.creator %></strong>
             <% end %>
           </small>
           <%= link_to event do %>

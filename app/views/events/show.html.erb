@@ -28,9 +28,9 @@
           <p>
             <%= picture.comment %>
           </p>
-          <%= content_tag :h4, 'Comments' if @event.comments %>
+          <%= content_tag :h4, 'Comments' if picture.comments %>
           <% picture.comments.each do |comment| %>
-            <%= picture.comment.description %>
+            <%= comment.description %>
           <% end %>
         <% end %>
         <a href="#myModal" data-toggle="modal">
