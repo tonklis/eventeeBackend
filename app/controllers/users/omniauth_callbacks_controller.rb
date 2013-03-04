@@ -17,10 +17,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		request.env["omniauth.auth"]
 	end
 
-	devise_scope :user do
-    get "logout", :to => "devise/sessions#destroy"
-    get "signin", :to => "devise/sessions#new"
-    get "signup", :to => "devise/registrations#new"
-  end
-
 end
