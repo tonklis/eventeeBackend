@@ -1,10 +1,9 @@
 <div class="row">
   <div class="span6 offset3">
-    <%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
+    <%= simple_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
       <% if @event.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
           <ul>
           <% @event.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -13,7 +12,6 @@
         </div>
       <% end %>
 
-      <%= f.association
 
       <%= f.hidden_field :creator_id, value: current_user.id %>
 
@@ -33,18 +31,17 @@
         <%= f.input :description, input_html: { rows: 5 } %>
         <%= f.input :location_id %>
 
-    	<%= f.fields_for :thumbnail do |thumbnail_form| %>
-    		<div>
-          <%= thumbnail_form.label :thumbnail %>
-          <%= thumbnail_form.file_field :attachment %>
-        </div>
+    	<%= f.simple_fields_for :thumbnail do |thumbnail_form| %>
+          <%= thumbnail_form.input :attachment, as: :file %>
       <% end %>
-    	<%#= f.fields_for :pictures do |pictures_form| %>
-        <div>
-          <%#= pictures_form.label :picture %>
-          <%#= pictures_form.file_field :attachment %>
-        </div>
-      <%# end %>
+
+      <fieldset>
+        <%= f.simple_fields_for :pictures do |pictures_form| %>
+            <%= pictures_form.input :attachment, as: :file %>
+        <% end %>
+        <%= f.link_to_add "Add Image", :pictures %>
+      </fieldset>
+    	
     	<%#= f.fields_for :videos do |videos_form| %>
         <div>
           <%#= videos_form.label :video %>
