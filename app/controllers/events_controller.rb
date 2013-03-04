@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @event }
+      format.json { render json: @event, :includes => [:thumbnail, :pictures, :videos, :documents] }
     end
   end
 
@@ -25,6 +25,10 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+		@event.build_thumbnail
+		@event.pictures.build
+		@event.videos.build
+		@event.documents.build
 
     respond_to do |format|
       format.html # new.html.erb
