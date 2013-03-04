@@ -1,40 +1,92 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Creator:</b>
-  <%= @event.creator_id %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= @event.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @event.end_date %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @event.url %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @event.location_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="row">
+  <div class="span8">
+    <div class="btn-toolbar pull-right">
+      <div class="btn-group">
+        <a class="btn" href="event.html"><i class="icon-align-left"></i>List</a>
+        <a class="btn" href="event-grid.html"><i class="icon-align-center"></i>Grid</a>
+        <a class="btn" href="#"><i class="icon-align-right"></i>Slideshow</a>
+      </div>
+    </div>
+    <h1><%= @event.name %></h1>
+    <p><small>Created by:</small>
+      <%= link_to @event.creator do %>
+        <%= @event.creator.first_name %> <%= @event.creator.last_name %>
+      <% end %>
+    </p>
+    <p><%= @event.description %></p>
+    <hr>
+    <div class="row">
+      <div class="span8">
+        <% @event.pictures.each do |picture| %>
+          <%= image_tag picture.url %>
+          <ul class="link-list">
+            <li><a href="#">Like</a></li>
+            <li><a href="#">Comment</a></li>
+            <li><a href="#">Share</a></li>
+            <li><a href="#">Buy Print</a></li>
+          </ul>
+          <p>
+            <%= picture.comment %>
+          </p>
+          <%= content_tag :h4, 'Comments' if @event.comments %>
+          <% picture.comments.each do |comment| %>
+            <%= picture.comment.description %>
+          <% end %>
+        <% end %>
+        <a href="#myModal" data-toggle="modal">
+          <img src="http://placehold.it/640x400" alt="">
+        </a>
+        <p class="pull-right">Uploaded by: <a href="#">djpechi</a> 2 hours ago</p>
+        <ul class="link-list">
+          <li><a href="#">Like</a></li>
+          <li><a href="#">Comment</a></li>
+          <li><a href="#">Share</a></li>
+          <li><a href="#">Buy Print</a></li>
+        </ul>
+        <p>Eu sunt quinoa, ut ullamco organic lo-fi butcher fixie tousled. Lo-fi Austin banjo, flexitarian nesciunt authentic skateboard post-ironic whatever do.</p>
+        <textarea placeholder="Comment" class="span8"></textarea>
+        <input type="submit" class="btn btn-small btn-primary">
+        <h4>Comments</h4>
+        <div class="row">
+          <div class="span1">
+            <img src="http://placehold.it/50x50" alt="">
+          </div>
+          <div class="span7">
+            <p>Eu sunt quinoa, ut ullamco organic lo-fi butcher fixie tousled. Lo-fi Austin banjo, flexitarian nesciunt authentic skateboard post-ironic whatever do.</p>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <%= link_to 'Add Pictures to Event', edit_event_path, class: 'btn btn-primary btn-large btn-block' %>
+    <hr>
+    <h4>Members</h4>
+    <form class="form-search pull-right">
+      <input type="text" class="input-medium search-query" placeholder="Add someone">
+      <button type="submit" class="btn">Search</button>
+    </form>
+    <div class="clearfix">
+            <img src="http://placehold.it/50x50" alt="" class="pull-left">
+            <a href="profile.html">Gerardo Acuña</a>
+          </div>
+          <div class="clearfix">
+            <img src="http://placehold.it/50x50" alt="" class="pull-left">
+            <a href="profile.html">Gerardo Acuña</a>
+          </div>
+          <div class="clearfix">
+            <img src="http://placehold.it/50x50" alt="" class="pull-left">
+            <a href="profile.html">Gerardo Acuña</a>
+          </div>
+          <div class="clearfix">
+            <img src="http://placehold.it/50x50" alt="" class="pull-left">
+            <a href="profile.html">Gerardo Acuña</a>
+          </div>
+    <% @event.users.each do |user| %>
+      <%= link_to user do %>
+        <%= user.first_name %> <%= user.last_name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

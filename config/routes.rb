@@ -9,9 +9,10 @@ Eventee::Application.routes.draw do
   resources :users
 
 	devise_scope :user do
-    root to: 'devise/registrations#new'
     get "logout", :to => "devise/sessions#destroy"
     get "signin", :to => "devise/sessions#new"
     get "signup", :to => "devise/registrations#new"
   end
+
+  root to: 'display#index'
 end

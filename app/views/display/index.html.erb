@@ -1,1 +1,52 @@
-HOLA AUTH
+<!-- Jumbotron -->
+<div class="row">
+  <div class="span6">
+    <div class="jumbotron">
+      <h1>Memory Crowdsourcing</h1>
+      <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="jumbotron">
+    	<div class="form-signin">
+    		<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), defaults: { input_html: { class: 'input-block-level' } } ) do |f| %>
+				  <%= devise_error_messages! %>
+				  <div class="row">
+				  	<div class="span2">
+				  		<%= f.input :first_name %>
+				  	</div>
+				  	<div class="span2">
+				  		<%= f.input :last_name %>
+				  	</div>
+				  </div>
+				  <%= f.input :email, :autofocus => true %>
+				  <%= f.input :password %>
+				  <%= f.input :password_confirmation %>
+
+				  <%= f.button :submit, "Sign up", class: 'btn btn-large btn-success' %> or <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
+				<% end %>
+    	</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- Example row of columns -->
+<div class="row-fluid">
+  <div class="span4">
+    <h2>Heading</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+  <div class="span4">
+    <h2>Heading</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+ </div>
+  <div class="span4">
+    <h2>Heading</h2>
+    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+</div>
