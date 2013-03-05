@@ -13,7 +13,10 @@
 				csv_emails: $("#invite_members_list")[0].value,
 				event_id: <%= @event.id %>
 			},
-      success: function(){ $('.result').append('Invitations succesfully sent!'); },
+			success: function(){ 
+				$('.result').append('Invitations succesfully sent!'); 
+				$("#invite_members_list")[0].value = "";
+			},
 			error:function(error){ alert("error sending emails"); }   
     }); 
 	}
@@ -69,7 +72,7 @@
       <div class="form-search">
         <textarea class="input-block-level" placeholder="(Add their email separated by commas.)" id="invite_members_list"></textarea>
         <div class="result"></div> 
-        <button class="btn" id="invite_members_button">Search</button>
+        <button class="btn" id="invite_members_button">Invite</button>
       </div>
       <% if @event.users.length > 0 %>
         <% @event.users.each do |user| %>

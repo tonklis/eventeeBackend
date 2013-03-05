@@ -1,6 +1,11 @@
 <% if current_user %>
-  <ul class="nav nav-pills pull-right">
-    <li><a href="#invites" data-toggle="modal">Invites (<%= Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>)</a></li>
+	<ul class="nav nav-pills pull-right">
+		<% invitations = Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>
+		<% if invitations > 0 %>
+			<li><%= link_to "Invites (#{invitations})", pending_invitations_path %> </li>
+		<% else %>
+			<li><%= link_to "Invites (0)", "#" %></li>
+		<% end %>
     <li><a href="account.html">My Account</a></li>
     <li><a href="/logout">Sign Out</a></li>
   </ul>

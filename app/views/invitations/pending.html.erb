@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span12">
+    <h1>Pending Invitations</h1>
+    <hr>
+    <ul class="thumbnails">
+			<% @events.each do |key,value| %>
+			<% 	event = Event.find(key) 
+					invitation = Invitation.find(value)
+			%>
+      <li class="span3">
+        <div class="thumbnail">
+          <small>
+            Created by: <%= link_to event.creator do %>
+              <strong><%= event.creator.first_name if event.creator %> <%= event.creator.last_name if event.creator %></strong>
+            <% end %>
+          </small>
+          <%= link_to event do %>
+            <%= image_tag event.thumbnail.url %>
+            <%= event.name %>
+          <% end %>
+					<p><%= event.description %></p>
+					<div style="text-align: center">
+						<%= link_to 'Continue', (confirm_invitations_path + "?id=#{invitation.message}"), :class => "btn btn-success" %>
+					</div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
