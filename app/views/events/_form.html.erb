@@ -30,7 +30,6 @@
       <fieldset>
         <%= f.simple_fields_for :pictures do |pictures_form| %>
 					<%= pictures_form.input :attachment, as: :file %>
-					<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
         <% end %>
         <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
       </fieldset>
