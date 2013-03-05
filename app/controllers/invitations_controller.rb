@@ -81,4 +81,23 @@ class InvitationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def confirm
+		tokens = params[:id].split("_")
+		@confirmed = false
+		src_message = params[:id]
+		src_event_id = tokens[1]
+
+		event = Event.find(src_event_id)
+		invitation_array = event.invitations.where("message = ?", params[:id])
+
+		if invitation_array.length == 1
+			invitation_array[0].update_attribute(:accepted, true)
+			@confirmed = true
+		else		
+			@confirmed = false	
+		end
+
+	end
+
 end
