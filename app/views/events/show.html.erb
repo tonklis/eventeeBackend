@@ -20,24 +20,14 @@
 </script>
 
 <div class="row">
-  <div class="span12">
-    <%= link_to 'Add Pictures to Event', event_step_path(event_id: @event), class: 'btn btn-primary btn-large btn-block' %>
-    <hr>
+  <div class="span8">
+    <h1><%= @event.name %></h1>
+    <%= link_to 'Add Pictures to Event', edit_event_path, class: 'add-something red' %>
   </div>  
 </div>
 
 <div class="row">
-  <div class="span8">
-    
-    <!-- <div class="btn-toolbar pull-right">
-      <div class="btn-group">
-        <a class="btn" href="event.html"><i class="icon-align-left"></i>List</a>
-        <a class="btn" href="event-grid.html"><i class="icon-align-center"></i>Grid</a>
-        <a class="btn" href="#"><i class="icon-align-right"></i>Slideshow</a>
-      </div>
-    </div>  -->
-   
-    <h1><%= @event.name %></h1>
+  <div class="span8 content">
     <p><small>Created by:</small>
       <%= link_to @event.creator do %>
         <strong></strong><%= @event.creator.first_name %> <%= @event.creator.last_name %></strong>
@@ -90,12 +80,12 @@
     </div>
   </div>
     <div class="span4">
-      <h4>Owner</h4>
+      <h3>Owner</h3>
       <%= link_to @event.creator do %>
         <%= @event.creator.first_name %> <%= @event.creator.last_name %>
       <% end %>
-      <h4>Members</h4>
-      <%= link_to 'Invite people to join this event.', '#', class: 'invite-people' %>
+      <h3>Members</h3>
+      <%= link_to 'Invite people to join event.', '#', class: 'add-something green' %>
       <div class="form-search">
         <textarea class="input-block-level" placeholder="(Add their email separated by commas.)" id="invite_members_list"></textarea>
         <div class="result"></div> 

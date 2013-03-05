@@ -1,9 +1,15 @@
 body {
 	background: image-url('bg.jpg');
+	padding-top: 0 !important;
 }
 
-.container {
-	padding: 0 10px;
+header {
+	height: 40px;
+	border-image: image-url('color-bar.jpg') 5% 0 100% 0% repeat;
+	background: #555;
+}
+
+.content {
 	background: #fff;
 	@include box-shadow( 0 0 5px rgba(0, 0, 0, 0.15));
 }

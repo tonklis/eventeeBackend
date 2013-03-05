@@ -5,5 +5,5 @@ jQuery ->
   $('#event_end_date').datepicker
     dateFormat: 'yy-mm-dd'
 
-  $('.invite-people').click ->
+  $('.add-something').click ->
     $('.form-search').show()
