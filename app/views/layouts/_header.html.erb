@@ -1,10 +1,16 @@
-<% if current_user %>
-  <ul class="nav nav-pills pull-right">
-    <li><a href="#invites" data-toggle="modal">Invites (<%= Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>)</a></li>
-    <li><a href="account.html">My Account</a></li>
-    <li><a href="/logout">Sign Out</a></li>
-  </ul>
-  <ul class="nav nav-pills pull-left">
-    <li><%= link_to 'Create Event', new_event_path %></li>
-  </ul>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% if current_user %>
+			  <ul class="link-list pull-right">
+			    <li><a href="#invites" data-toggle="modal"><span class="entypo large">✉</span> (<%= Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>)</a></li>
+			    <li><a href="account.html">Settings</a></li>
+			    <li><a class="entypo large" href="/logout"></a></li>
+			  </ul>
+			  <ul class="nav nav-pills pull-left">
+			    <li><%= link_to 'Create Event', new_event_path %></li>
+			  </ul>
+			<% end %>
+		</div>
+	</div>
+</div>

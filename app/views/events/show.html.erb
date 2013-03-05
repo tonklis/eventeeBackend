@@ -21,67 +21,57 @@
 
 <div class="row">
   <div class="span8">
-    <h1><%= @event.name %></h1>
+    <h1 class="big-margin"><%= @event.name %></h1>
     <%= link_to 'Add Pictures to Event', edit_event_path, class: 'add-something red' %>
   </div>  
 </div>
 
 <div class="row">
   <div class="span8 content">
-    <p><small>Created by:</small>
-      <%= link_to @event.creator do %>
-        <strong></strong><%= @event.creator.first_name %> <%= @event.creator.last_name %></strong>
-      <% end %>
-    </p>
-    <p><%= @event.description %></p>
+    <blockquote><p><%= @event.description %></p></blockquote>
     <hr>
     <div class="row">
       <div class="span8">
         <% @event.pictures.each do |picture| %>
-          <%= image_tag picture.url %>
-          <ul class="link-list">
-            <li><a href="#">Like</a></li>
-            <li><a href="#">Comment</a></li>
-            <li><a href="#">Share</a></li>
-            <li><a href="#">Buy Print</a></li>
-          </ul>
-          <p>
-            <%= picture.comment %>
-          </p>
-          <%= content_tag :h4, 'Comments' if picture.comments %>
-          <% picture.comments.each do |comment| %>
-            <%= comment.description %>
-          <% end %>
+          <div class="image-container">
+            <%= image_tag picture.url %>
+            <p><%= picture.comment %></p>
+          </div>
+          <div class="comment-area clearfix">
+            <textarea placeholder="Add your comment here." class="span8"></textarea>
+            <input type="submit" class="btn pull-right">
+          </div>
+          <div class="clearfix">
+            <p class="pull-right uploader"><small>Uploaded by: <a class="green" href="#">djpechi</a> 2 hours ago</small></p>
+            <ul class="link-list action-bar pull-left">
+              <li><a class="entypo large" href="#">☆</a></li>
+              <li><a class="entypo large comment" href="#"></a></li>
+              <li><a class="entypo large" href="#"></a></li>
+              <li><a href="#">Buy</a></li>
+            </ul>
+          </div>
+
+           <div class="comment-display">
+            <h4>Comments</h4>
+            <div class="row">
+              <div class="span1">
+                <img src="http://placehold.it/50x50" alt="">
+              </div>
+              <div class="span6">
+                <% picture.comments.each do |comment| %>
+                  <p><%= comment.description %></p>
+                <% end %>
+              </div>
+            </div>
+            <hr>
+          </div>
         <% end %>
-        <a href="#myModal" data-toggle="modal">
-          <img src="http://placehold.it/640x400" alt="">
-        </a>
-        <p class="pull-right">Uploaded by: <a href="#">djpechi</a> 2 hours ago</p>
-        <ul class="link-list">
-          <li><a href="#">Like</a></li>
-          <li><a href="#">Comment</a></li>
-          <li><a href="#">Share</a></li>
-          <li><a href="#">Buy Print</a></li>
-        </ul>
-        <p>Eu sunt quinoa, ut ullamco organic lo-fi butcher fixie tousled. Lo-fi Austin banjo, flexitarian nesciunt authentic skateboard post-ironic whatever do.</p>
-        <textarea placeholder="Comment" class="span8"></textarea>
-        <input type="submit" class="btn btn-small btn-primary">
-        <h4>Comments</h4>
-        <div class="row">
-          <div class="span1">
-            <img src="http://placehold.it/50x50" alt="">
-          </div>
-          <div class="span7">
-            <p>Eu sunt quinoa, ut ullamco organic lo-fi butcher fixie tousled. Lo-fi Austin banjo, flexitarian nesciunt authentic skateboard post-ironic whatever do.</p>
-          </div>
-        </div>
-        <hr>
       </div>
     </div>
   </div>
     <div class="span4">
       <h3>Owner</h3>
-      <%= link_to @event.creator do %>
+      <%= link_to @event.creator, class: 'sidebar-link' do %>
         <%= @event.creator.first_name %> <%= @event.creator.last_name %>
       <% end %>
       <h3>Members</h3>
@@ -92,11 +82,15 @@
         <button class="btn" id="invite_members_button">Search</button>
       </div>
       <% if @event.users.length > 0 %>
-        <% @event.users.each do |user| %>
-          <%= link_to user do %>
-            <%= user.first_name %> <%= user.last_name %>
+        <ul class="sidebar-link">
+          <% @event.users.each do |user| %>
+            <li>
+              <%= link_to user do %>
+                <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+            </li>
           <% end %>
-        <% end %>
+        </ul>
       <% else %>
         <h4 class="muted">There are no members yet.</h4>
       <% end %>

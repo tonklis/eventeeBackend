@@ -7,3 +7,7 @@ jQuery ->
 
   $('.add-something').click ->
     $('.form-search').show()
+
+  $('.comment').click ->
+  	$('.comment-area').addClass('open')
+  	false

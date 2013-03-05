@@ -3,43 +3,124 @@ $orange: #f7941e;
 $blue: #13a8a4;
 $green: #8cc649;
 
-@mixin add-something-icon($color, $name) {
+@mixin add-something-icon($color, $hover, $name) {
 	&.#{$name} {
 		color: $color;
 		&:before {
 			background: $color;
 		}
 		&:hover {
-			color: $color;
+			color: $hover;
 			text-decoration: none;
 			&:before {
-				background: $color;
+				background: $hover;
 			}
 		}
 	}
 }
 
-@mixin table-base {
-  th {
-    text-align: center;
-    font-weight: bold;
-  }
-  td, th {padding: 2px}
+.green {
+	color: $green;
+	&:hover {
+		color: darken($green, 5%);
+	}
+}
+
+.blue {
+	color: $blue;
+	&:hover {
+		color: darken($blue, 5%);
+	}
+}
+
+.orange {
+	color: $orange;
+	&:hover {
+		color: darken($orange, 5%);
+	}
+}
+
+.red {
+	color: $red;
+	&:hover {
+		color: darken($red, 5%);
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'NexaBold';
 	color: #555;
+	&.big-margin {
+		margin: 40px 0 20px;
+	}
+}
+
+.uploader {
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.entypo {
+	font-family: 'Entypo';	
+	&.medium {
+		font-size: 25px;
+		line-height: 25px;
+	}
+	&.large {
+		font-size: 35px;
+		line-height: 25px;
+	}
 }
 
 a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: bold;
+	@include transition (all 0.2s ease-in-out);
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+blockquote {
+	color: #777;
+	font-size: 24px;
+	border-left: none;
+	margin: 1em 10px;
+	padding: .5em 10px;
+	quotes:"\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+	font-family: Georgia;
+	color:#ccc;
+	content:open-quote;
+	font-size:4em;
+	line-height:.1em;
+	margin-right:.25em;
+	vertical-align:-.4em;
+}
+
+blockquote p {
+	display:inline;
+	font-family: Georgia;
+	font-style: italic;
+	font-size: 24px;
+}
+
+.sidebar-link {
+	font-size: 18px;
+	color: $blue;
+	&:hover {
+		color: $orange;
+		text-decoration: none;
+	}
 }
 
 .add-something {
 	font-family: 'NexaBold';
 	font-size: 18px;
+	margin: 5px 0 15px;
+	display: block;
 	&:before {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 		content: '+';
@@ -54,8 +135,8 @@ a {
 		color: #fff;
 		margin: 0 10px 0 0;
 	}
-	@include add-something-icon($green, green);
-	@include add-something-icon($orange, orange);
-	@include add-something-icon($red, red);
-	@include add-something-icon($blue, blue);
+	@include add-something-icon($green, $orange, green);
+	@include add-something-icon($orange, $green, orange);
+	@include add-something-icon($red, $blue, red);
+	@include add-something-icon($blue, $red, blue);
 }
