@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   has_many :documents, :as => :assetable, :class_name => "Document"	
   has_many :videos, :as => :assetable, :class_name => "Video"
 
+  validates_presence_of :description, :name, :url
+
 	accepts_nested_attributes_for :thumbnail
 	accepts_nested_attributes_for :pictures
 	accepts_nested_attributes_for :documents

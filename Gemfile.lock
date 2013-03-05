@@ -37,6 +37,9 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bourbon (3.1.1)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     client_side_validations (3.2.2)
     client_side_validations-simple_form (2.0.1)
@@ -172,6 +175,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   bootstrap-sass
+  bourbon
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)

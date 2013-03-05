@@ -3,32 +3,36 @@
   <li><a href="#">Sign Out</a></li>
 </ul>
 
+<!--
 <div class="masthead">
   <h3 class="muted">Eventee</h3>
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
         <ul class="nav">
-          <!-- <li><a href="main.html">News Feed</a></li> -->
-          <li class="active"><%= link_to 'My Events', events_path %></li>
+          <li><a href="main.html">News Feed</a></li>
+          <li class="active"><%#= link_to 'My Events', events_path %></li>
           <li><a href="#">Friends</a></li>
           <li><a href="#">Discover</a></li>
         </ul>
       </div>
     </div>
-  </div><!-- /.navbar -->
-</div>
+  </div>
+</div> 
+-->
 
 <div class="row">
   <div class="span12">
     <ul class="nav nav-pills pull-left">
-      <li><a href="#invites" data-toggle="modal">Invites (3)</a></li>
+      <!-- <li><a href="#invites" data-toggle="modal">Invites (3)</a></li> -->
       <li><%= link_to 'Create Event', new_event_path %></li>
     </ul>
 
-    <form class="form-search pull-right">
-      <input type="text" class="input-medium search-query">
-      <button type="submit" class="btn">Search</button>
-    </form>
+<!--     
+<form class="form-search pull-right">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form> 
+-->
   </div>
 </div>

@@ -1,8 +1,9 @@
 <script>
 	$(document).on("ready", initialize);
-	function initialize(){
-		$("#invite_members_button").on("click", send_emails);
-	}
+
+  	function initialize(){
+  		$("#invite_members_button").on("click", send_emails);
+  	}
 
 	function send_emails(){
 		$.ajax({
@@ -12,24 +13,34 @@
 				csv_emails: $("#invite_members_list")[0].value,
 				event_id: <%= @event.id %>
 			},
-      success: function(){ alert("emails sent"); },
+      success: function(){ $('.result').append('Invitations succesfully sent!'); },
 			error:function(error){ alert("error sending emails"); }   
     }); 
 	}
 </script>
+
+<div class="row">
+  <div class="span12">
+    <%= link_to 'Add Pictures to Event', event_step_path(event_id: @event), class: 'btn btn-primary btn-large btn-block' %>
+    <hr>
+  </div>  
+</div>
+
 <div class="row">
   <div class="span8">
-    <div class="btn-toolbar pull-right">
+    
+    <!-- <div class="btn-toolbar pull-right">
       <div class="btn-group">
         <a class="btn" href="event.html"><i class="icon-align-left"></i>List</a>
         <a class="btn" href="event-grid.html"><i class="icon-align-center"></i>Grid</a>
         <a class="btn" href="#"><i class="icon-align-right"></i>Slideshow</a>
       </div>
-    </div>
+    </div>  -->
+   
     <h1><%= @event.name %></h1>
     <p><small>Created by:</small>
       <%= link_to @event.creator do %>
-        <%= @event.creator.first_name %> <%= @event.creator.last_name %>
+        <strong></strong><%= @event.creator.first_name %> <%= @event.creator.last_name %></strong>
       <% end %>
     </p>
     <p><%= @event.description %></p>
@@ -78,34 +89,26 @@
       </div>
     </div>
   </div>
-  <div class="span4">
-    <%= link_to 'Add Pictures to Event', event_step_path(event_id: @event), class: 'btn btn-primary btn-large btn-block' %>
-    <hr>
-    <h4>Invite</h4>
-    <div class="form-search pull-right" >
-      <input type="text" class="input-medium search-query" placeholder="Add guest" id="invite_members_list">
-      <button class="btn" id="invite_members_button">Search</button>
-    </div>
-    <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-    <% @event.users.each do |user| %>
-      <%= link_to user do %>
-        <%= user.first_name %> <%= user.last_name %>
+    <div class="span4">
+      <h4>Owner</h4>
+      <%= link_to @event.creator do %>
+        <%= @event.creator.first_name %> <%= @event.creator.last_name %>
       <% end %>
-    <% end %>
-  </div>
+      <h4>Members</h4>
+      <%= link_to 'Invite people to join this event.', '#', class: 'invite-people' %>
+      <div class="form-search">
+        <textarea class="input-block-level" placeholder="(Add their email separated by commas.)" id="invite_members_list"></textarea>
+        <div class="result"></div> 
+        <button class="btn" id="invite_members_button">Search</button>
+      </div>
+      <% if @event.users %>
+        <% @event.users.each do |user| %>
+          <%= link_to user do %>
+            <%= user.first_name %> <%= user.last_name %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h4 class="muted">There are no members yet.</h4>
+      <% end %>
+    </div>
 </div>
