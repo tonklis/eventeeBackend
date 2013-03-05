@@ -101,7 +101,7 @@
         <div class="result"></div> 
         <button class="btn" id="invite_members_button">Search</button>
       </div>
-      <% if @event.users %>
+      <% if @event.users.length > 0 %>
         <% @event.users.each do |user| %>
           <%= link_to user do %>
             <%= user.first_name %> <%= user.last_name %>

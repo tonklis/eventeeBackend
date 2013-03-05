@@ -1,3 +1,12 @@
+<h2>
+	You have been invited by <%= @event.creator.first_name %> to join an event!
+</h2>
 <p>
- <%= @event.description %>
+	<ul>
+		<li>Event: <%= @event.name %></li>
+		<li>Description: <%= @event.description %></li>
+	</ul>
+</p>
+<p>
+Click <%= link_to "HERE", (confirm_invitations_url + "?id=#{@invitation.message}") %> to accept.
 </p>

@@ -1,7 +1,9 @@
+<% if current_user %>
 <ul class="nav nav-pills pull-right">
   <li><a href="account.html">My Account</a></li>
-  <li><a href="#">Sign Out</a></li>
+  <li><a href="/logout">Sign Out</a></li>
 </ul>
+<% end %>
 
 <!--
 <div class="masthead">
@@ -22,17 +24,17 @@
 -->
 
 <div class="row">
-  <div class="span12">
+	<div class="span12">
+
+	<% if current_user %>
     <ul class="nav nav-pills pull-left">
-      <!-- <li><a href="#invites" data-toggle="modal">Invites (3)</a></li> -->
+			<li><a href="#invites" data-toggle="modal">Invites (<%= Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>)</a></li>
       <li><%= link_to 'Create Event', new_event_path %></li>
     </ul>
-
-<!--     
-<form class="form-search pull-right">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form> 
--->
+	<% end %>
+    <form class="form-search pull-right">
+      <input type="text" class="input-medium search-query">
+      <button type="submit" class="btn">Search</button>
+    </form>
   </div>
 </div>

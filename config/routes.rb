@@ -3,7 +3,9 @@ Eventee::Application.routes.draw do
 
   resources :comments
   resources :assets
-  resources :invitations
+  resources :invitations do
+    match 'confirm_invitation' => 'invitations#confirm', :on => :collection, :as => :confirm
+	end
   resources :requests
   resources :locations
   resources :events
