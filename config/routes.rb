@@ -15,5 +15,7 @@ Eventee::Application.routes.draw do
     get "signup", :to => "devise/registrations#new", :as => :signup
   end
 
+	match 'send_email', :to => "display#send_email", :as => :send_email
+
   root to: 'display#index'
 end
