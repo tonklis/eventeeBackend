@@ -1,9 +1,0 @@
-<%= simple_nested_form_for @event, url: wizard_path do |f| %>
-  <h1>Send Invites</h1>
-  <hr>
-  <%= f.simple_fields_for :invitations do |pictures_form| %>
-    <%= f.input :invitation %>
-  <% end %>
-  <%= f.button :submit, 'Continue' %>
-  <%= link_to "Skip this step", next_wizard_path(event_id: @event.id) %>
-<% end %>

@@ -23,12 +23,9 @@
 			    <li><a href="account.html">My Account</a></li>
 			    <li><a class="entypo large" href="/logout"></a></li>
 			  </ul>
-			  <ul class="nav nav-pills pull-left">
-			    <li><%= link_to 'Create Event', new_event_path %></li>
-			  </ul>
 			<% else %>
 				<ul class="link-list pull-right">
-			    <li><a href="/login">Login</a></li>
+			    <li><a href="/signin">Login</a></li>
 			  </ul>
 			<% end %>
 		</div>

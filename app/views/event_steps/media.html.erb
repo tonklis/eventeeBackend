@@ -1,9 +1,0 @@
-<%= simple_nested_form_for @event, url: wizard_path do |f| %>
-  <h1>Add Pictures</h1>
-
-  <%#= f.simple_fields_for :pictures do |pictures_form| %>
-    <%#= pictures_form.input :attachment, as: :file %>
-  <%# end %>
-  <%#= f.link_to_add "Add Image", :pictures %>
-  <%= f.button :submit, 'Continue', class: 'btn btn-large btn-success' %>
-<% end %>
