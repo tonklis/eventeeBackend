@@ -1,16 +1,11 @@
 
 <% if @user.thumbnail_url  %>
-	<% image_tag @user.thumbnail_url %>
+	<%= image_tag @user.thumbnail_url %>
 <% else %>
-	<% image_tag "http://hosting.gmodules.com/ig/gadgets/file/114894663643104408454/GuestUserIcon.png"  %>
+	<%= image_tag "http://hosting.gmodules.com/ig/gadgets/file/114894663643104408454/GuestUserIcon.png"  %>
 <% end %>
-
 <p>
-  <b>First name:</b>
   <%= @user.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
   <%= @user.last_name %>
 </p>
+<br/>

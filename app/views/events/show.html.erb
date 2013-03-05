@@ -46,7 +46,7 @@
             <input type="submit" class="btn pull-right">
           </div>
           <div class="clearfix">
-            <p class="pull-right uploader"><small>Uploaded by: <a class="green" href="#"><%= creator.first_name + creator.last_name %></a> <%= time_ago_in_words(picture.created_at) %> ago</small></p>
+            <p class="pull-right uploader"><small>Uploaded by: <%= link_to (creator.first_name + " " + creator.last_name + " "), creator %><%= time_ago_in_words(picture.created_at) %> ago</small></p>
             <ul class="link-list action-bar pull-left">
               <li><a class="entypo large" href="#">☆</a></li>
               <li><a class="entypo large comment" href="#"></a></li>
