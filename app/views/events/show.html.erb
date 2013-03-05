@@ -80,32 +80,19 @@
   </div>
   <div class="span4">
     <%= link_to 'Add Pictures to Event', edit_event_path, class: 'btn btn-primary btn-large btn-block' %>
-    <hr>
+		<hr>
     <h4>Invite</h4>
     <div class="form-search pull-right" >
-      <input type="text" class="input-medium search-query" placeholder="Add guest" id="invite_members_list">
+      <input type="text" class="input-medium search-query" placeholder="Add emails" id="invite_members_list">
       <button class="btn" id="invite_members_button">Search</button>
-    </div>
-    <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-          <div class="clearfix">
-            <img src="http://placehold.it/50x50" alt="" class="pull-left">
-            <a href="profile.html">Gerardo Acuña</a>
-          </div>
-    <% @event.users.each do |user| %>
-      <%= link_to user do %>
-        <%= user.first_name %> <%= user.last_name %>
-      <% end %>
-    <% end %>
-  </div>
+		</div>
+		<h4>Members</h4>
+		<% @event.users.each do |user| %>
+			<div class="clearfix">
+				<img src="http://placehold.it/50x50" alt="" class="pull-left">
+				<%= link_to user do %>
+        	<%= user.first_name %> <%= user.last_name %>
+	      <% end %>
+      </div>
+		<% end %>
 </div>
