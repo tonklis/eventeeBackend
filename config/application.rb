@@ -22,6 +22,12 @@ module Eventee
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
+    # Add the fonts path
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
