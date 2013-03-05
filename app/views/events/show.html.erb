@@ -1,3 +1,22 @@
+<script>
+	$(document).on("ready", initialize);
+	function initialize(){
+		$("#invite_members_button").on("click", send_emails);
+	}
+
+	function send_emails(){
+		$.ajax({
+      url: "/send_email.json",
+			type: "post",
+			data: {
+				csv_emails: $("#invite_members_list")[0].value,
+				event_id: <%= @event.id %>
+			},
+      success: function(){ alert("emails sent"); },
+			error:function(error){ alert("error sending emails"); }   
+    }); 
+	}
+</script>
 <div class="row">
   <div class="span8">
     <div class="btn-toolbar pull-right">
@@ -62,11 +81,11 @@
   <div class="span4">
     <%= link_to 'Add Pictures to Event', event_step_path(event_id: @event), class: 'btn btn-primary btn-large btn-block' %>
     <hr>
-    <h4>Members</h4>
-    <form class="form-search pull-right">
-      <input type="text" class="input-medium search-query" placeholder="Add someone">
-      <button type="submit" class="btn">Search</button>
-    </form>
+    <h4>Invite</h4>
+    <div class="form-search pull-right" >
+      <input type="text" class="input-medium search-query" placeholder="Add guest" id="invite_members_list">
+      <button class="btn" id="invite_members_button">Search</button>
+    </div>
     <div class="clearfix">
             <img src="http://placehold.it/50x50" alt="" class="pull-left">
             <a href="profile.html">Gerardo Acuña</a>
