@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: eventee_development
   pool: 5
-  username: Acuna
-  password:
+  username: rails_pg
+  password: postgres
   host: localhost
 
 test:
@@ -12,6 +12,6 @@ test:
   encoding: unicode
   database: eventee_test
   pool: 5
-  username: Acuna
-  password:
+  username: rails_pg
+  password: postgres
   host: localhost
