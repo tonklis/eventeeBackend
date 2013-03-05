@@ -17,4 +17,5 @@ class Event < ActiveRecord::Base
 	accepts_nested_attributes_for :pictures
 	accepts_nested_attributes_for :documents
 	accepts_nested_attributes_for :videos
+	
 end

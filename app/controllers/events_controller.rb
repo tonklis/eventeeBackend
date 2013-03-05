@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+
 	#before_filter :authenticate_user!
   # GET /events
   # GET /events.json
@@ -27,9 +28,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
 		@event.build_thumbnail
-		# @event.pictures.build
-		# @event.videos.build
-		# @event.documents.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,7 +47,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to event_steps_path(event_id: @event) }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }

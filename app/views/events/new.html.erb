@@ -1,5 +1,36 @@
-<h1>New event</h1>
+<div class="row">
+  <div class="span6 offset3">
+  	<h1>Add an Event</h1>
+  	<hr>
+    <%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
+      
+      <%= f.hidden_field :creator_id, value: current_user.id %>
 
-<%= render 'form' %>
+      <%= f.input :name, label: 'Event Name' %>
+      <div class="input-prepend">
+        <span class="add-on">eventee.co/</span>
+        <%= f.text_field :url, as: :string, class: 'span2' %>
+      </div>
+      <div class="row">
+        <div class="span3">
+          <%= f.input :start_date, as: :string %>
+        </div>
+        <div class="span3">
+          <%= f.input :end_date, as: :string %>
+        </div>
+      </div>
+      <%= f.input :description, input_html: { rows: 5 } %>
+      <%= f.input :location_id %>
 
-<%= link_to 'Back', events_path %>
+      <%= f.simple_fields_for :thumbnail do |thumbnail_form| %>
+        <%= thumbnail_form.input :attachment, as: :file, label: 'Thumbnail' %>
+      <% end %>
+
+      <div class="actions">
+        <%= f.button :submit, 'Continue', class: "btn btn-large btn-primary pull-right" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

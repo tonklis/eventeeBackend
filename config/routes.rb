@@ -7,6 +7,7 @@ Eventee::Application.routes.draw do
   resources :requests
   resources :locations
   resources :events
+  resources :event_steps
   resources :users
 
 	devise_scope :user do

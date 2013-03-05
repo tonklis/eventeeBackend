@@ -12,7 +12,6 @@
         </div>
       <% end %>
 
-
       <%= f.hidden_field :creator_id, value: current_user.id %>
 
         <%= f.input :name, label: 'Event Name' %>
@@ -34,13 +33,6 @@
     	<%= f.simple_fields_for :thumbnail do |thumbnail_form| %>
           <%= thumbnail_form.input :attachment, as: :file %>
       <% end %>
-
-      <fieldset>
-        <%= f.simple_fields_for :pictures do |pictures_form| %>
-            <%= pictures_form.input :attachment, as: :file %>
-        <% end %>
-        <%= f.link_to_add "Add Image", :pictures %>
-      </fieldset>
     	
     	<%#= f.fields_for :videos do |videos_form| %>
         <div>
