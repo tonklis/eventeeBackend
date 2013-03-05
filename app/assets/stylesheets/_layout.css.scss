@@ -12,6 +12,7 @@ header {
 	height: 50px;
 	border-image: image-url('color-bar.jpg') 5% 0 100% 0% repeat;
 	background: #555;
+	box-shadow: 1px 0 5px rgba(0, 0, 0, 0.3);
 	a {
 		color: #fff;
 	}
@@ -23,13 +24,16 @@ header {
 			&:hover {
 				color: $orange;
 			}
+			&.login {
+				padding: 14px 0;
+			}
 		}
 	}
 }
 
 .content {
 	background: #fff;
-	@include box-shadow( 0 0 5px rgba(0, 0, 0, 0.15));
+	@include box-shadow( 0 0 3px rgba(0, 0, 0, 0.1));
 	// margin: 20px 0 0;
 }
 

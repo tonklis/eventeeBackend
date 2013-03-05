@@ -19,6 +19,17 @@ $green: #8cc649;
 	}
 }
 
+.lead {
+	color: #555;
+}
+
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 .green {
 	color: $green;
 	&:hover {
