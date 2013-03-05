@@ -12,6 +12,39 @@
  *= require jquery.ui.datepicker
  */
 
+@font-face {
+    font-family: 'NexaBold';
+    src: font-url('nexa-bold.eot');
+    src: font-url('nexa-bold.eot?#iefix') format('embedded-opentype'),
+         font-url('nexa-bold.woff') format('woff'),
+         font-url('nexa-bold.ttf') format('truetype'),
+         font-url('nexa-bold.svg#NexaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NexaLight';
+    src: font-url('nexa-light.eot');
+    src: font-url('nexa-light.eot?#iefix') format('embedded-opentype'),
+         font-url('nexa-light.woff') format('woff'),
+         font-url('nexa-light.ttf') format('truetype'),
+         font-url('nexa-light.svg#NexaLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Entypo';
+    src: font-url('entypo.eot');
+    src: font-url('entypo.eot?#iefix') format('embedded-opentype'),
+         font-url('entypo.woff') format('woff'),
+         font-url('entypo.ttf') format('truetype'),
+         font-url('entypo.svg#NexaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @import "bourbon";
 @import "bootstrap";
 @import "typefaces";
