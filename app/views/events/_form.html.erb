@@ -2,32 +2,29 @@
   <div class="span6 offset3">
     <%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
       
-      <%= f.hidden_field :creator_id, value: current_user.id %>
-
-      <%= f.input :name, label: 'Event Name' %>
-      <div class="input-prepend">
-        <span class="add-on">eventee.co/</span>
-        <%= f.text_field :url, as: :string, class: 'span2' %>
-      </div>
-      <div class="row">
-        <div class="span3">
-          <%= f.input :start_date, as: :string %>
-        </div>
-        <div class="span3">
-          <%= f.input :end_date, as: :string %>
-        </div>
+			<% if not @edit %>
+				<%= f.hidden_field :creator_id, value: current_user.id %>
+			<% end %>
+			<% if not @edit or (@edit and current_user.id == @event.creator.id) %>
+			<div class="row">
+	    	<div class="span3">
+  	    	<%= f.input :start_date, as: :string %>
+	      </div>
+  	    <div class="span3">
+    	  	<%= f.input :end_date, as: :string %>
+      	</div>
       </div>
       <%= f.input :description, input_html: { rows: 5 } %>
       <%= f.input :location_id %>
-
-      <%= f.simple_fields_for :thumbnail do |thumbnail_form| %>
-        <%= thumbnail_form.input :attachment, as: :file, label: 'Thumbnail' %>
-      <% end %>
-
+  	    <%= f.simple_fields_for :thumbnail do |thumbnail_form| %>
+    	      <%= thumbnail_form.input :attachment, as: :file, label: 'Thumbnail' %>
+     	 	<% end %>
+			<% end %>
       <hr>
       <fieldset>
         <%= f.simple_fields_for :pictures do |pictures_form| %>
-          <%= pictures_form.input :attachment, as: :file %>
+					<%= pictures_form.input :attachment, as: :file %>
+					<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
         <% end %>
         <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
       </fieldset>

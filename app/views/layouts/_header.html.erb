@@ -1,10 +1,24 @@
+<% if current_user %>
 <div class="container">
 	<div class="row">
 		<div class="span12">
 			<% if current_user %>
 			  <ul class="link-list pull-right">
-			    <li><a href="#invites" data-toggle="modal"><span class="entypo large">✉</span> (<%= Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>)</a></li>
-			    <li><a href="account.html">Settings</a></li>
+			    <% invitations = Invitation.where("email = ? and accepted = ?", current_user.email, false).count %>
+					<% if invitations > 0 %>
+						<li>
+							<%= link_to pending_invitations_path do %>
+								<span class="entypo large">✉</span> <%= invitations %>
+							<% end %>
+						</li>
+					<% else %>
+						<li>
+							<%= link_to "#" do %>
+								<span class="entypo large">✉</span> (0)
+							<% end %>
+						</li>
+					<% end %>
+			    <li><a href="account.html">My Account</a></li>
 			    <li><a class="entypo large" href="/logout"></a></li>
 			  </ul>
 			  <ul class="nav nav-pills pull-left">
@@ -14,3 +28,4 @@
 		</div>
 	</div>
 </div>
+<% end %>

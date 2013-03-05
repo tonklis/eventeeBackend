@@ -4,7 +4,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+		@events = Event.where("creator_id = ?", current_user.id)
+		Invitation.where("email = ? and accepted = ?", current_user.email, true).each do |invitation|
+			@events << invitation.event
+		end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +41,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+		@edit = true
   end
 
   # POST /events

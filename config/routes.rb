@@ -5,6 +5,7 @@ Eventee::Application.routes.draw do
   resources :assets
   resources :invitations do
     match 'confirm_invitation' => 'invitations#confirm', :on => :collection, :as => :confirm
+    match 'pending_invitation' => 'invitations#pending', :on => :collection, :as => :pending
 	end
   resources :requests
   resources :locations
