@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
 												 last_name:auth.info.last_name,
 						 uid:auth.uid,
 						 email:auth.info.email,
-						 password:Devise.friendly_token[0,20]
+						 password:Devise.friendly_token[0,20],
+						 thumbnail_ur: "http://graph.facebook.com/#{auth.id}/picture?type=large"
 			)
 		end
 		user

@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+
+<% if @user.thumbnail_url %>
+	<% image_tag @user.thumbnail_url %>
+<% else %>
+	<% image_tag  %>
+<% end %>
 
 <p>
   <b>First name:</b>
@@ -9,17 +14,3 @@
   <b>Last name:</b>
   <%= @user.last_name %>
 </p>
-
-<p>
-  <b>Thumbnail url:</b>
-  <%= @user.thumbnail_url %>
-</p>
-
-<p>
-  <b>Uid:</b>
-  <%= @user.uid %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
