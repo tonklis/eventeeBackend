@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+  layout 'minimal'
 	#before_filter :authenticate_user!
   # GET /events
   # GET /events.json

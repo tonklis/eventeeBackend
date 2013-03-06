@@ -2,6 +2,7 @@ class DisplayController < ApplicationController
 
 	skip_before_filter :authenticate_user!
 
+<<<<<<< Updated upstream
 	layout 'unique',  only: :unique_page
 
 	def landing_page
@@ -10,6 +11,10 @@ class DisplayController < ApplicationController
 		end
 	end
 
+=======
+	layout 'empty',  only: :unique_page
+	
+>>>>>>> Stashed changes
 	def index
 		if signed_in?
 			redirect_to events_path
