@@ -50,13 +50,20 @@ function approveAccess(){
 function pictureDelete(){
 	var original_id = this.id;
 	var id = original_id.split("_")[1];
-	
-	$.ajax({
-      url: "/assets/" + id + ".json",
-			type: "delete",
-			success: function(){
-			},
-			error:function(error){ alert("error removing picture"); }   
-    });
 
+	var is_confirmed = confirm("Do you really want to delete the picture?");
+
+	if (is_confirmed)
+	{
+		$.ajax({
+    	  url: "custom_remove?id=" + id + ".json",
+				type: "post",
+				success: function(){
+					$("#picture_div_"+id+"").remove();
+				},
+				error:function(error){ 
+					$("#picture_div_"+id+"").remove();
+				}   
+  	  });
+	}
 }

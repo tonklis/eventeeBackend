@@ -78,7 +78,17 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to assets_url }
-			format.json { render :json => true }
+			format.json { render json: true }
     end
   end
+
+	def custom_remove
+    @asset = Asset.find(params[:id])
+    @asset.destroy
+
+    respond_to do |format|
+			format.json { render json: true }
+    end
+  end
+
 end
