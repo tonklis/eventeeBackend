@@ -27,5 +27,5 @@ Eventee::Application.routes.draw do
 	match 'custom_remove', :to => 'assets#custom_remove', :as => :remove_asset
 
 	match "/:id", :to => "display#unique_page", :as => :unique_page
-  root to: 'events#index'
+  root to: 'display#landing_page'
 end
