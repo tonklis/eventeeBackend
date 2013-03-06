@@ -3,6 +3,7 @@ $(document).on("ready", initialize);
 
 function cierraModal(){
 	$('.guest-modal').removeClass('show');
+	$('.upload-modal').removeClass('show');
 	$('.overlay').hide();
 }
 

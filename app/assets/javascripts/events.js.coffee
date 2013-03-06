@@ -15,7 +15,3 @@ jQuery ->
  	$('.upload').click ->
  		$('.upload-modal').addClass('show')
  		$('.overlay').show()
-
-	$('.close').click ->
-		$('.guest-modal').removeClass('show')
-		$('.overlay').hide()
