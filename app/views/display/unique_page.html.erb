@@ -6,8 +6,8 @@
 <% end %>
 
 <div class="description">
-	<h1>StartupBus MX 13</h1>
-	<p>Transition effects can be applied to a wide variety of CSS properties, including background-color, width, height, opacity, and many more. Keep reading for further details of supported properties.</p>
+	<h1><%= @event.name %></h1>
+	<p><%= @event.description %></p>
 </div>
 
 <div class="slider">
@@ -21,56 +21,6 @@
 </div>
 
 <% if @confirmed %>
-
-	<!-- see the guest list -->
-	<div class='overlay'></div>
-	<div id='modal'>
-    <div id='content'>
-    	<h2>Guests</h2>
-    	<ul class="user-list">
-    		<% @event.users.each do |user| %>
-    		<li class="cleafix">
-    			<span class="user"><%= user.first_name + " " + user.last_name %></span><a href="#" class="guest-action revoke_access">remove</a>
-    		</li>
-    		<li class="cleafix">
-    			<span class="user">Gerardo Acuna</span><a href="#" class="guest-action revoke_access">remove</a>
-    		</li>
-    		<% end %>
-    	</ul>
-    </div>
-    <a href='#' id='close'>close</a>
-	</div>
-	<div>
-	<h4> User list </h4>
-	<% @event.users.each do |user| %>
-		<ul>
-			<li><%= user.first_name + " " + user.last_name %></li>
-			<li><%= user.email %></li>
-			<li><%= image_tag user.picture.try("url") %></li>
-			<% if not user.phone.blank? %> <li><%= user.phone %></li> <% end %>
-			<% if not user.social_url_1.blank? %> <li><%= user.social_url_1 %></li> <% end %>
-			<% if not user.social_url_2.blank? %> <li><%= user.social_url_2 %></li> <% end %>
-			<% if not user.social_url_3.blank? %> <li><%= user.social_url_3 %></li> <% end %>
-			<% if not user.social_url_4.blank? %> <li><%= user.social_url_4 %></li> <% end %>
-		</ul>
-	<% end %>
-	</div>
-
-	<!-- upload pictures -->
-	<div>
-		<h4>Upload Pictures</h4>
-    <%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
-			<fieldset>
-        <%= f.simple_fields_for :pictures do |pictures_form| %>
-					<%= pictures_form.input :attachment, as: :file %>
-					<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
-        <% end %>
-        <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
-      </fieldset>
-      <%= f.button :submit, 'Upload into event', class: "btn btn-large btn-primary pull-right" %>
-		<% end %>
-	</div>
-<% elsif @creator %>
 	
 	<div class="controls">
 		<div class="guests">Guests</div>
@@ -79,6 +29,51 @@
 
 	<div class='overlay'></div>
 
+	<!-- approve/delete guest list -->
+	<div class='modal guest-modal'>
+    <div class='content'>
+    	<h2>Guests</h2>
+    		<% if @event.requests.length <= 0 %>
+    			No guests
+    		<% else %>
+				<% @event.requests.where("accepted = true").each do |request| %>
+		    	<ul class="user-list">
+					<li class="cleafix">
+						<span class="user"><%= request.user.first_name + " " + request.user.last_name %></span>
+					</li>
+				</ul>
+				<% end %>
+			<% end %>
+    </div>
+    <span class='close'>close</span>
+	</div>
+    	
+	<!-- upload pictures -->
+	<div class='modal upload-modal'>
+    <div class='content'>
+    	<h2>Pictures</h2>
+			<%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
+				<fieldset>
+		      <%= f.simple_fields_for :pictures do |pictures_form| %>
+						<%= pictures_form.input :attachment, as: :file %>
+						<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
+		      <% end %>
+		  	  <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
+		    </fieldset>
+			  <%= f.button :submit, 'Upload into event', class: "btn btn-large btn-primary pull-right" %>
+			<% end %>
+    </div>
+    <a href='#' class='close'>close</a>
+	</div>
+
+	<% elsif @creator %>
+	
+	<div class="controls">
+		<div class="guests">Guests</div>
+		<div class="upload">Upload Pics.</div>
+	</div>
+
+	<div class='overlay'></div>
 	
 	<!-- approve/delete guest list -->
 	<div class='modal guest-modal'>
@@ -105,7 +100,7 @@
     <span class='close'>close</span>
 	</div>
 	
-	<!-- upload guest list -->
+	<!-- upload pictures -->
 	<div class='modal upload-modal'>
     <div class='content'>
     	<h2>Pictures</h2>
@@ -128,7 +123,6 @@
     </div>
     <a href='#' class='close'>close</a>
 	</div>
-
 <% end %>
 
 <script>

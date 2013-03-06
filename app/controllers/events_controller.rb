@@ -69,7 +69,7 @@ class EventsController < ApplicationController
       if @event.update_attributes(params[:event])
 				pictures += @event.pictures
 				@event.update_attribute(:pictures, pictures)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to "/#{@event.url}" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
