@@ -1,6 +1,6 @@
 
-<% if @user.thumbnail_url  %>
-	<%= image_tag @user.thumbnail_url %>
+<% if @user.picture.try("url")  %>
+	<%= image_tag @user.picture.url %>
 <% else %>
 	<%= image_tag "http://hosting.gmodules.com/ig/gadgets/file/114894663643104408454/GuestUserIcon.png"  %>
 <% end %>

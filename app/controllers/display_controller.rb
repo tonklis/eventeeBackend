@@ -10,6 +10,14 @@ class DisplayController < ApplicationController
 		end
 	end
 
+	def unique_page
+		@event = Event.find_by_url(params[:id])
+		if current_user
+			@confirmed = @event.users.index(current_user) ? true : false
+			@creator = @event.creator.id == current_user.id
+		end
+	end	
+
 	def send_email
 		event_id = params[:event_id]
 		csv_emails = params[:csv_emails].split(",")

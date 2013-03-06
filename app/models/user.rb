@@ -4,15 +4,16 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :validatable
 
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :uid, :phone, :country, :social_url_1, :social_url_2, :social_url_3, :social_url_4, :thumbnail_url, :picture_attributes
 	has_and_belongs_to_many :events
 	has_many :created_events, :class_name => "Event", :foreign_key => :creator_id
 	has_many :requests
 	has_many :comments
+	has_one :picture, :as => :assetable, :class_name => "Picture"
 
 	validates_presence_of :first_name, :email, :last_name
+	accepts_nested_attributes_for :picture
 
 	def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
 		user = User.where(:email => auth.info.email).first

@@ -1,0 +1,64 @@
+<%= @event.name %>
+<br />
+<% if @confirmed %>
+
+	<!-- see the guest list -->
+	<div>
+	<h4> User list </h4>
+	<% @event.users.each do |user| %>
+		<ul>
+			<li><%= user.first_name + " " + user.last_name %></li>
+			<li><%= user.email %></li>
+			<li><%= image_tag user.picture.try("url") %></li>
+			<% if not user.phone.blank? %> <li><%= user.phone %></li> <% end %>
+			<% if not user.social_url_1.blank? %> <li><%= user.social_url_1 %></li> <% end %>
+			<% if not user.social_url_2.blank? %> <li><%= user.social_url_2 %></li> <% end %>
+			<% if not user.social_url_3.blank? %> <li><%= user.social_url_3 %></li> <% end %>
+			<% if not user.social_url_4.blank? %> <li><%= user.social_url_4 %></li> <% end %>
+		</ul>
+	<% end %>
+	</div>
+
+	<!-- upload pictures -->
+	<div>
+		<h4>Upload Pictures</h4>
+    <%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
+			<fieldset>
+        <%= f.simple_fields_for :pictures do |pictures_form| %>
+					<%= pictures_form.input :attachment, as: :file %>
+					<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
+        <% end %>
+        <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
+      </fieldset>
+      <%= f.button :submit, 'Upload into event', class: "btn btn-large btn-primary pull-right" %>
+		<% end %>
+	</div>
+<% elsif @creator %>
+
+	<!-- approve/delete guest list -->
+	<div>
+	<h4>Approve/delete guest list</h4>
+	<% @event.requests.each do |request| %>
+		<ul>
+			<li>
+				<%= request.user.first_name + " " + request.user.last_name %>
+				<% if request.accepted %>
+					<%= link_to "Revoke", "#", :id => "request_#{request.id}", :class => "revoke_access btn btn-accept" %>
+				<% else %>
+					<%= link_to "Approve", "#", :id => "request_#{request.id}", :class => "approve_access btn btn-accept" %>
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
+	</div>
+	<!-- uplaod/delete pictures -->
+	<div>
+	<h4>Upload/delete pictures</h4>
+	<% @event.pictures.each do |picture| %>
+		<ul id="picture_div_<%= picture.id %>">
+			<li><%= image_tag picture.url %> <%= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
+		</ul>
+	<% end %>
+	</div>
+
+<% end %>

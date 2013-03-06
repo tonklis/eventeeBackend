@@ -101,7 +101,6 @@ class InvitationsController < ApplicationController
 	end
 
 	def pending
-
 		@events = {}
 		Invitation.where("email = ? and accepted = ?", current_user.email, false).each do |invitation|
 			@events[invitation.event.id] = invitation.id
@@ -111,8 +110,6 @@ class InvitationsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @events }
     end
-
-
 	end
-
+	
 end
