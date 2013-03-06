@@ -80,6 +80,7 @@ a.guest-action:hover {
   background: #000;
   opacity: 0.5;
   filter: alpha(opacity=50);
+  z-index: 10;
 }
 
 .modal {
@@ -92,6 +93,7 @@ a.guest-action:hover {
 	width: 400px;
 	left: 50%;
 	margin-left: -200px;
+	z-index: 12;
 }
 
 .content {

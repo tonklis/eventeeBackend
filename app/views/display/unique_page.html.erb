@@ -108,7 +108,7 @@
 	<!-- upload guest list -->
 	<div class='modal upload-modal'>
     <div class='content'>
-    	<h1>Upload/delete pictures</h1>
+    	<h2>Pictures</h2>
     	<% @event.pictures.each do |picture| %>
 				<ul id="picture_div_<%= picture.id %>">
 					<li><%= image_tag picture.url %> <%= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
