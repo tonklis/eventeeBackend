@@ -178,7 +178,6 @@ a.guest-action:hover {
 	width: 400px;
 	left: 50%;
 	margin-left: -200px;
-	margin-top: -200px;
 	z-index: 12;
 }
 
@@ -221,7 +220,7 @@ a.guest-action:hover {
 }
 
 .guest-modal, .upload-modal {
-	margin-top: -100%;
+	margin-top: -200%;
 }
 
 .get-invited {
