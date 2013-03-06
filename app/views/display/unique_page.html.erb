@@ -13,8 +13,9 @@
 <div class="slider">
 	<div id="cbp-fwslider" class="cbp-fwslider">
 		<ul>
-      <li><img src="_/img/skates.jpeg" alt="img01"/></li>
-      <li><img src="_/img/skater.jpeg" alt="img02"/></li>
+			<% @event.pictures.each do |picture| %>
+				<li><%= image_tag picture.url %></li>
+			<% end %>
 		</ul>
 	</div>
 </div>

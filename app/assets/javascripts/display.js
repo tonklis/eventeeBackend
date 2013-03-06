@@ -1,9 +1,16 @@
 $(document).on("ready", initialize);
 
+
+function cierraModal(){
+	$('.guest-modal').removeClass('show');
+	$('.overlay').hide();
+}
+
 function initialize(){
 	$(".revoke_access").on("click", revokeAccess);
 	$(".approve_access").on("click", approveAccess);
 	$(".picture_delete").on("click", pictureDelete);
+	$(".close").on("click", cierraModal);
 }
 
 function denetialize(){

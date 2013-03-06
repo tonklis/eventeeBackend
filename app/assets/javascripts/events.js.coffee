@@ -13,5 +13,5 @@ jQuery ->
  		$('.overlay').show()
 
 	$('.close').click ->
-		$('.modal').removeClass('show')
+		$('.guest-modal').removeClass('show')
 		$('.overlay').hide()
