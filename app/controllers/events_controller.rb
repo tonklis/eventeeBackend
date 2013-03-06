@@ -64,9 +64,11 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
-    respond_to do |format|
+		pictures = @event.pictures
+    respond_to do |format|			
       if @event.update_attributes(params[:event])
+				pictures += @event.pictures
+				@event.update_attribute(:pictures, pictures)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else

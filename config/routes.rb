@@ -2,7 +2,8 @@ Eventee::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
   resources :comments
-  resources :assets 
+  resources :assets
+	
 	resources :invitations do
     match 'confirm_invitation' => 'invitations#confirm', :on => :collection, :as => :confirm
     match 'pending_invitation' => 'invitations#pending', :on => :collection, :as => :pending
@@ -23,6 +24,7 @@ Eventee::Application.routes.draw do
   end
 
 	match 'send_email', :to => "display#send_email", :as => :send_email
+	match 'custom_remove', :to => 'assets#custom_remove', :as => :remove_asset
 
 	match "/:id", :to => "display#unique_page", :as => :unique_page
   root to: 'display#index'
