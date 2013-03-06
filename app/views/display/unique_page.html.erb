@@ -1,8 +1,44 @@
-<%= @event.name %>
-<br />
+<% unless @confirmed || @creator %>
+	<div class="not-allowed">
+		<%= image_tag 'ribbon.png' %>
+		<a href="#" class="get-invited">Get Invited</a>
+	</div>
+<% end %>
+
+<div class="description">
+	<h1>StartupBus MX 13</h1>
+	<p>Transition effects can be applied to a wide variety of CSS properties, including background-color, width, height, opacity, and many more. Keep reading for further details of supported properties.</p>
+</div>
+
+<div class="slider">
+	<div id="cbp-fwslider" class="cbp-fwslider">
+		<ul>
+      <li><img src="_/img/skates.jpeg" alt="img01"/></li>
+      <li><img src="_/img/skater.jpeg" alt="img02"/></li>
+		</ul>
+	</div>
+</div>
+
 <% if @confirmed %>
 
 	<!-- see the guest list -->
+	<div class='overlay'></div>
+	<div id='modal'>
+    <div id='content'>
+    	<h2>Guests</h2>
+    	<ul class="user-list">
+    		<% @event.users.each do |user| %>
+    		<li class="cleafix">
+    			<span class="user"><%= user.first_name + " " + user.last_name %></span><a href="#" class="guest-action revoke_access">remove</a>
+    		</li>
+    		<li class="cleafix">
+    			<span class="user">Gerardo Acuna</span><a href="#" class="guest-action revoke_access">remove</a>
+    		</li>
+    		<% end %>
+    	</ul>
+    </div>
+    <a href='#' id='close'>close</a>
+	</div>
 	<div>
 	<h4> User list </h4>
 	<% @event.users.each do |user| %>
@@ -34,24 +70,52 @@
 		<% end %>
 	</div>
 <% elsif @creator %>
-
-	<!-- approve/delete guest list -->
-	<div>
-	<h4>Approve/delete guest list</h4>
-	<% @event.requests.each do |request| %>
-		<ul>
-			<li>
-				<%= request.user.first_name + " " + request.user.last_name %>
-				<% if request.accepted %>
-					<%= link_to "Revoke", "#", :id => "request_#{request.id}", :class => "revoke_access btn btn-accept" %>
-				<% else %>
-					<%= link_to "Approve", "#", :id => "request_#{request.id}", :class => "approve_access btn btn-accept" %>
-				<% end %>
-			</li>
-		</ul>
-	<% end %>
+	
+	<div class="controls">
+		<div class="guests">Guests</div>
+		<div class="upload">Upload Pics.</div>
 	</div>
-	<!-- uplaod/delete pictures -->
+
+	<div class='overlay'></div>
+	<!-- approve/delete guest list -->
+	<div class='modal guest-modal'>
+    <div class='content'>
+    	<h1>approve/delete guests</h1>
+    	<h2>Guests</h2>
+    		<% if @event.requests.length <= 0 %>
+    			No guests
+    			<a href="#">Invite Guests</a>
+    		<% else %>
+			<% @event.requests.each do |request| %>
+	    	<ul class="user-list">
+					<li class="cleafix">
+						<span class="user"><%= request.user.first_name + " " + request.user.last_name %></span>
+						<% if request.accepted %>
+							<%= link_to "remove", "#", :id => "request_#{request.id}", :class => "guest-action revoke_access" %>
+						<% else %>
+							<%= link_to "approve", "#", :id => "request_#{request.id}", :class => "guest-action approve_access" %>
+						<% end %>
+					</li>
+				</ul>
+			<% end %>
+			<% end %>
+    </div>
+    <a href='#' class='close'>close</a>
+	</div>
+	
+	<!-- upload guest list -->
+	<div class='modal upload-modal'>
+    <div class='content'>
+    	<h1>Upload/delete pictures</h1>
+    	<% @event.pictures.each do |picture| %>
+				<ul id="picture_div_<%= picture.id %>">
+					<li><%= image_tag picture.url %> <%= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
+				</ul>
+			<% end %>
+    </div>
+    <a href='#' class='close'>close</a>
+	</div>
+
 	<div>
 	<h4>Upload/delete pictures</h4>
 	<% @event.pictures.each do |picture| %>
