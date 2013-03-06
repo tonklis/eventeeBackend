@@ -28,10 +28,6 @@ body {
 	padding: 0 0 10px 0;
 }
 
-.user-list {
-	width: 400px;
-}
-
 .user-list li {
 	padding: 10px 0;
 }
@@ -93,6 +89,9 @@ a.guest-action:hover {
   border-radius:14px;
   padding:8px;
   @include transition(all 0.3s);
+	width: 400px;
+	left: 50%;
+	margin-left: -200px;
 }
 
 .content {
@@ -101,9 +100,9 @@ a.guest-action:hover {
   padding:20px;
 }
 
-.guest-modal.show {
-	margin: 0;
-	position: 100px;
+.guest-modal.show, .upload-modal.show {
+	margin-top: 0;
+	top: 100px;
 }
 
 .close {
@@ -331,4 +330,10 @@ a.attended:hover {
 	-webkit-transition: box-shadow 0.2s ease-in-out;
 	-moz-transition: box-shadow 0.2s ease-in-out;
 	transition: box-shadow 0.2s ease-in-out;
+}
+
+.footer {
+	position: fixed;
+	left: 10px;
+	bottom: 10px;
 }
