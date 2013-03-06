@@ -15,4 +15,6 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.autocomplete
 //= require jquery_nested_form
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .

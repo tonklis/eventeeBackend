@@ -25,7 +25,14 @@ header {
 				color: $orange;
 			}
 			&.login {
-				padding: 14px 0;
+				margin: 3px 0;
+				padding: 8px 14px;
+				background: $orange;
+				@include border-radius(2px);
+				@include linear-gradient($orange, darken($orange, 3%), $deprecated-pos1: left center, $deprecated-pos2: left top);
+				@include box-shadow(0px 1px 1px rgba(000,000,000,0.2),inset 0px 1px 0px rgba(255,255,255,0.2));
+				text-shadow: 0px 1px 0px rgba(000,000,000,0.1), 0px 1px 0px rgba(255,255,255,0.3);
+				border: 1px solid darken($orange, 4%);
 			}
 		}
 	}

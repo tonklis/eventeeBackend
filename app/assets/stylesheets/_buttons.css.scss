@@ -9,11 +9,16 @@
 	border: 1px solid darken($green, 5%);
 	text-shadow: none;
 	@include transition (all 0.2s ease-in-out);
-	&:hover {
+	&:hover, &:focus {
 		@include transition (none);
 		@include box-shadow(0px 1px 1px rgba(000,000,000,0.2),inset 0px 0px 0px rgba(255,255,255,0.2));
 		color: #fff;
+		background: #85c23b;
 	}
+}
+
+.btn-success:hover {
+	background: #85c23b;
 }
 
 .form-signin input[type="text"],
