@@ -3,7 +3,13 @@ class DisplayController < ApplicationController
 	skip_before_filter :authenticate_user!
 
 	layout 'unique',  only: :unique_page
-	
+
+	def landing_page
+		if signed_in?
+			redirect_to events_path
+		end
+	end
+
 	def index
 		if signed_in?
 			redirect_to events_path
