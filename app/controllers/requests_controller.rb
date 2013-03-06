@@ -81,4 +81,21 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def revoke
+		request = Request.find(params[:id])
+		request.update_attribute(:accepted, false)
+		respond_to do |format|
+   		format.json { render json: true }
+	  end
+	end
+
+	def approve
+		request = Request.find(params[:id])
+		request.update_attribute(:accepted, true)
+		respond_to do |format|
+   		format.json { render json: true }
+	  end
+	end
+
 end

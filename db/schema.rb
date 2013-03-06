@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305053437) do
+ActiveRecord::Schema.define(:version => 20130306014146) do
 
   create_table "assets", :force => true do |t|
     t.string   "type"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130305053437) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "events", ["url"], :name => "index_events_on_url", :unique => true
 
   create_table "events_users", :id => false, :force => true do |t|
     t.integer "event_id"
@@ -98,6 +100,13 @@ ActiveRecord::Schema.define(:version => 20130305053437) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "asset_id"
+    t.string   "country"
+    t.string   "phone"
+    t.string   "social_url_1"
+    t.string   "social_url_2"
+    t.string   "social_url_3"
+    t.string   "social_url_4"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -12,7 +12,7 @@
             <% end %>
           </small>
           <%= link_to event do %>
-            <%= image_tag event.thumbnail.url %>
+            <%= image_tag event.thumbnail.try("url") %>
             <%= event.name %>
           <% end %>
           <p><%= event.description %></p>

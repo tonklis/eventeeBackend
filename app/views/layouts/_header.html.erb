@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="span12">
 			<div id="logo">
-				<%= image_tag 'logo.png' %>
+				<%= link_to image_tag('logo.png'), "/" %>
 			</div>
 			<% if current_user %>
 			  <ul class="link-list pull-right">
@@ -14,13 +14,13 @@
 							<% end %>
 						</li>
 					<% else %>
+			    	<li><%= link_to 'Create Event', new_event_path %></li>
 						<li>
 							<%= link_to "#" do %>
 								<span class="entypo large">✉</span> (0)
 							<% end %>
 						</li>
 					<% end %>
-			    <li><a href="account.html">My Account</a></li>
 			    <li><a class="entypo large" href="/logout"></a></li>
 			  </ul>
 			<% else %>

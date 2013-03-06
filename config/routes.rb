@@ -2,12 +2,15 @@ Eventee::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
   resources :comments
-  resources :assets
-  resources :invitations do
+  resources :assets 
+	resources :invitations do
     match 'confirm_invitation' => 'invitations#confirm', :on => :collection, :as => :confirm
     match 'pending_invitation' => 'invitations#pending', :on => :collection, :as => :pending
 	end
-  resources :requests
+  resources :requests do
+    match 'revoke' => 'requests#revoke', :on => :collection, :as => :pending
+    match 'approve' => 'requests#approve', :on => :collection, :as => :pending
+	end
   resources :locations
   resources :events
   resources :event_steps
@@ -21,5 +24,6 @@ Eventee::Application.routes.draw do
 
 	match 'send_email', :to => "display#send_email", :as => :send_email
 
+	match "/:id", :to => "display#unique_page", :as => :unique_page
   root to: 'display#index'
 end

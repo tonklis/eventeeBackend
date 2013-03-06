@@ -78,7 +78,7 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to assets_url }
-      format.json { head :no_content }
+			format.json { render :json => true }
     end
   end
 end
