@@ -1,6 +1,5 @@
 $(document).on("ready", initialize);
 
-
 function cierraModal(){
 	$('.guest-modal').removeClass('show');
 	$('.upload-modal').removeClass('show');
@@ -12,12 +11,32 @@ function initialize(){
 	$(".approve_access").on("click", approveAccess);
 	$(".picture_delete").on("click", pictureDelete);
 	$(".close").on("click", cierraModal);
+	$("#upload_picture").on("click", subeAjax);
 }
 
 function denetialize(){
 	$(".revoke_access").off("click", revokeAccess);
 	$(".approve_access").off("click", approveAccess);
 	$(".picture_delete").off("click", pictureDelete);
+}
+
+function subeAjax(){
+var form=$('#subeforma').serialize();
+$.ajax({
+    type:'put',
+    url:'events.json',
+    data:form,
+    beforeSend:function(){
+    },
+    complete:function(){    },
+    success:function(result){
+	    alert(result);
+    },
+		error: function(error){
+			alert(error);
+		}
+});
+    
 }
 
 function revokeAccess(){
