@@ -9,9 +9,94 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Entypo';
+    src: font-url('entypo.eot');
+    src: font-url('entypo.eot?#iefix') format('embedded-opentype'),
+         font-url('entypo.woff') format('woff'),
+         font-url('entypo.ttf') format('truetype'),
+         font-url('entypo.svg#MarketingScriptRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
+}
+
+.btn {
+	@include transition(all 0.3s);
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px 15px;
+	border: none;
+	text-decoration: none;
+	border-radius: 2px;
+	&:hover {
+		color: #fff;
+		background: #66cac8;
+	}
+}
+
+.content h2.no-guests {
+	text-align: center;
+	color: #777;
+	margin: 20px;
+	border-bottom: none;
+}
+
+.invite {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.fields {
+	margin: 20px 0;
+	position: relative;
+	display: block;
+	height: 75px;
+	label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 75px;
+		height: 75px;
+		background: #66cac8;
+		color: #fff;
+		font-weight: bold;
+		text-align: center;
+		line-height: 75px;
+		font-family: 'Entypo';
+		font-size: 80px;
+		font-weight: normal;
+		cursor: pointer;
+		&:after {
+			content: 'Select File';
+			font-size: 12px;
+			display: block;
+			position: absolute;
+			bottom: -30px;
+			left: 8px;
+			text-align: center;
+		}
+	}
+	input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 75px;
+		height: 75px;
+		background: #000;
+		opacity: 0;
+	}
+}
+
+.block {
+	display: block;
+	margin: 4px 0 0;
+	text-align: center;
 }
 
 .content h1 {
