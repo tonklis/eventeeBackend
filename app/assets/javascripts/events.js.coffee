@@ -8,10 +8,10 @@ jQuery ->
   $('.add-something').click ->
     $('.form-search').show()
 
-  $('.comment').click ->
-  	$('.comment-area').addClass('open')
-  	false
-
  	$('.guests').click ->
  		$('.guest-modal').addClass('show')
  		$('.overlay').show()
+
+	$('.close').click ->
+		$('.modal').removeClass('show')
+		$('.overlay').hide()
