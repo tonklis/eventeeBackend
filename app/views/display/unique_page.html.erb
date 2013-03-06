@@ -77,6 +77,8 @@
 	</div>
 
 	<div class='overlay'></div>
+
+	
 	<!-- approve/delete guest list -->
 	<div class='modal guest-modal'>
     <div class='content'>
@@ -112,17 +114,28 @@
 					<li><%= image_tag picture.url %> <%= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
 				</ul>
 			<% end %>
+			<%= simple_nested_form_for @event, :html => {:multipart => true} , defaults: { input_html: { class: 'input-block-level' } }  do |f| %>
+				<fieldset>
+		      <%= f.simple_fields_for :pictures do |pictures_form| %>
+						<%= pictures_form.input :attachment, as: :file %>
+						<%= pictures_form.hidden_field :creator_id, :value => current_user.id %>
+		      <% end %>
+		  	  <%= f.link_to_add "Add Image", :pictures, label: 'Pictures', class: 'btn btn-large btn-success' %>
+		    </fieldset>
+			  <%= f.button :submit, 'Upload into event', class: "btn btn-large btn-primary pull-right" %>
+			<% end %>
     </div>
     <a href='#' class='close'>close</a>
 	</div>
 
-	<div>
+
+<!-- 	<div>
 	<h4>Upload/delete pictures</h4>
-	<% @event.pictures.each do |picture| %>
-		<ul id="picture_div_<%= picture.id %>">
-			<li><%= image_tag picture.url %> <%= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
+	<%# @event.pictures.each do |picture| %>
+		<ul id="picture_div_<%#= picture.id %>">
+			<li><%#= image_tag picture.url %> <%#= link_to "Delete", "", :id => "picture_#{picture.id}", :class => "picture_delete btn btn-accept" %> </li>
 		</ul>
-	<% end %>
-	</div>
+	<%# end %>
+	</div> -->
 
 <% end %>

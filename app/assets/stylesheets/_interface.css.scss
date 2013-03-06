@@ -75,6 +75,7 @@ a.guest-action:hover {
 }
 
 .overlay {
+	display: none;
   position: fixed; 
   top: 0;
   left: 0;
@@ -91,12 +92,18 @@ a.guest-action:hover {
   background:rgba(0,0,0,0.2);
   border-radius:14px;
   padding:8px;
+  @include transition(all 0.3s);
 }
 
 .content {
-    border-radius:8px;
-    background:#fff;
-    padding:20px;
+  border-radius:8px;
+  background:#fff;
+  padding:20px;
+}
+
+.guest-modal.show {
+	margin: 0;
+	position: 100px;
 }
 
 .close {
@@ -126,7 +133,7 @@ a.guest-action:hover {
 	color: #333;
 }
 
-.guest-modal {
+.guest-modal, .upload-modal {
 	margin-top: -100%;
 }
 

@@ -11,3 +11,7 @@ jQuery ->
   $('.comment').click ->
   	$('.comment-area').addClass('open')
   	false
+
+ 	$('.guests').click ->
+ 		$('.guest-modal').addClass('show')
+ 		$('.overlay').show()
